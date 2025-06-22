@@ -30,12 +30,6 @@ The objective was to build a model capable of automatically identifying and clas
 
 ## Model Architecture
 
-Absolutely! Since your repository includes **both U-Net and Mask R-CNN implementations**, the **"Model Architecture"** section should reflect this dual approach. Here's a revised version that describes both architectures clearly while preserving your original tone and intent:
-
----
-
-## Model Architecture
-
 This project implements and compares two deep learning models for semantic segmentation: **U-Net** and **Mask R-CNN**. Each model offers distinct advantages depending on the nature of the features being extracted and the characteristics of the input maps.
 
 ### 🧠 U-Net
