@@ -13,7 +13,7 @@ Semantic-Segmentation-for-Feature-Extraction/
 ├── evaluate.py           # Model evaluation and visualization
 ├── utils.py              # Helper functions for plotting, metrics, etc.
 ├── README.md             # Project documentation
-└── models/               # (Optional) Saved model weights and checkpoints
+└── models/               # Saved model weights and checkpoints
 ```
 
 ---
