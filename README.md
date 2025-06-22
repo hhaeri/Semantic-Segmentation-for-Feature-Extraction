@@ -32,7 +32,7 @@ The objective was to build a model capable of automatically identifying and clas
 
 This project implements and compares two deep learning models for semantic segmentation: **U-Net** and **Mask R-CNN**. Each model offers distinct advantages depending on the nature of the features being extracted and the characteristics of the input maps.
 
-### 🧠 U-Net
+### U-Net
 
 U-Net is a fully convolutional neural network with an encoder–decoder architecture that has demonstrated remarkable effectiveness in modeling complex spatial patterns. Given the intricate nature of topographic maps and the need for robust pixel-level predictions, U-Net was chosen as a primary architecture. It is particularly effective when working with a limited number of labeled training images and can generalize well to unseen data.
 
@@ -44,7 +44,7 @@ Key strengths of the U-Net approach:
 
 We employed a transfer learning strategy by using a **ResNet34** backbone pre-trained on ImageNet, and experimented with various hyperparameters such as number of layers, kernel sizes, and loss functions (e.g., Focal Loss, Dice Loss, Jaccard Loss).
 
-### 🧠 Mask R-CNN
+### Mask R-CNN
 
 Mask R-CNN extends Faster R-CNN by adding a branch for predicting segmentation masks on each Region of Interest (RoI). This model is ideal for detecting and segmenting **object-based features** with well-defined boundaries, such as specific geological symbols or discrete features embedded in the map.
 
