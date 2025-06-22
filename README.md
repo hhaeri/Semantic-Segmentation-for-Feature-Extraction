@@ -8,14 +8,36 @@ This repository contains the full implementation of a semantic segmentation pipe
 
 ```
 Semantic-Segmentation-for-Feature-Extraction/
-├── main.py               # Entry point: ties together data loading, training, and evaluation
-├── loading.py            # Data loading and preprocessing functions
-├── trainer.py            # Model architecture, training, and performance tracking
-├── evaluate.py           # Model evaluation and visualization
-├── utils.py              # Helper functions for plotting, metrics, etc.
-├── models/               # Saved model weights and checkpoints
-├── README.md             # Project documentation
-└── requirements.txt      # Python dependencies
+│
+├── main.py
+├── config.py
+├── requirements.txt
+│
+├── data/
+│   ├── __init__.py
+│   └── loading.py
+│
+├── models/
+│   ├── __init__.py
+│   └── unet.py
+│
+├── trainers/
+│   ├── __init__.py
+│   └── trainer.py
+│
+├── inference/
+│   ├── __init__.py
+│   └── inference.py
+│
+├── utils/
+│   ├── __init__.py
+│   ├── metrics.py
+│   └── visualization.py
+│
+└── outputs/
+    ├── models/
+    ├── results/
+    └── logs/
 
 ```
 
@@ -84,7 +106,7 @@ Suggestions were made to include more annotated examples for such classes to imp
 
 GitHub Repository: [https://github.com/hhaeri/Semantic-Segmentation-for-Feature-Extraction](https://github.com/hhaeri/Semantic-Segmentation-for-Feature-Extraction)
 
-Modular refactoring in progress. Current structure includes:
+Current structure includes:
 
 * `main.py`: main execution script
 * `loading.py`: data generators and preprocessing
