@@ -2,7 +2,7 @@
 
 ## Repository Overview
 
-This repository contains the full implementation of a semantic segmentation pipeline for extracting geologic features from historic topographic maps using U-Net and Mask_RCNN.
+This repository contains the full implementation of a semantic segmentation pipeline for extracting geologic features from historic topographic maps using U-Net.
 
 ## Project Structure
 
@@ -30,7 +30,7 @@ The objective was to build a model capable of automatically identifying and clas
 
 ## Model Architecture
 
-This project implements and compares two deep learning models for semantic segmentation: **U-Net** and **Mask R-CNN**. Each model offers distinct advantages depending on the nature of the features being extracted and the characteristics of the input maps.
+This project uses a **U-Net** architecture for semantic segmentation of geologic features from rasterized topographic maps.
 
 ### U-Net
 
@@ -43,20 +43,6 @@ Key strengths of the U-Net approach:
 * Efficient training with relatively few annotated examples
 
 We employed a transfer learning strategy by using a **ResNet34** backbone pre-trained on ImageNet, and experimented with various hyperparameters such as number of layers, kernel sizes, and loss functions (e.g., Focal Loss, Dice Loss, Jaccard Loss).
-
-### Mask R-CNN
-
-Mask R-CNN extends Faster R-CNN by adding a branch for predicting segmentation masks on each Region of Interest (RoI). This model is ideal for detecting and segmenting **object-based features** with well-defined boundaries, such as specific geological symbols or discrete features embedded in the map.
-
-Key strengths of the Mask R-CNN approach:
-
-* Excellent at instance segmentation and object detection
-* Works well when features of interest are sparse but distinct
-* Offers bounding boxes in addition to segmentation masks
-
-The Mask R-CNN implementation provides a complementary approach to U-Net, especially useful when object-level detection is required alongside semantic segmentation.
-
-Both models were implemented from scratch and trained using customized pipelines for data loading, preprocessing, augmentation, and evaluation. Results from each model were compared across multiple metrics including **Intersection over Union (IoU)** and **visual inspection** to assess real-world applicability.
 
 ## Network Configuration & Training
 
