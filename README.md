@@ -32,6 +32,17 @@ The objective was to build a model capable of automatically identifying and clas
 
 This project uses a **U-Net** architecture for semantic segmentation of geologic features from rasterized topographic maps.
 
+* **Model Type**: Fully convolutional encoder-decoder architecture with skip connections
+
+* **Input**: RGB scans of historic USGS topographic maps
+
+* **Output**: Pixel-level segmentation masks identifying geologic features
+  
+* **Loss Function**: Categorical focal loss
+
+* **Framework**: TensorFlow
+
+
 ### U-Net
 
 U-Net is a fully convolutional neural network with an encoder–decoder architecture that has demonstrated remarkable effectiveness in modeling complex spatial patterns. Given the intricate nature of topographic maps and the need for robust pixel-level predictions, U-Net was chosen as a primary architecture. It is particularly effective when working with a limited number of labeled training images and can generalize well to unseen data.
