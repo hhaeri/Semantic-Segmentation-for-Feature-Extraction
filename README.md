@@ -2,7 +2,7 @@
 
 ## Repository Overview
 
-This repository contains the full implementation of a semantic segmentation pipeline for extracting geologic features from historic topographic maps using U-Net and Mask_RCNN.\
+This repository contains the full implementation of a semantic segmentation pipeline for extracting geologic features from historic topographic maps using U-Net and Mask_RCNN.
 
 ## Project Structure
 
