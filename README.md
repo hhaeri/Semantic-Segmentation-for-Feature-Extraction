@@ -13,8 +13,10 @@ Semantic-Segmentation-for-Feature-Extraction/
 ├── trainer.py            # Model architecture, training, and performance tracking
 ├── evaluate.py           # Model evaluation and visualization
 ├── utils.py              # Helper functions for plotting, metrics, etc.
+├── models/               # Saved model weights and checkpoints
 ├── README.md             # Project documentation
-└── models/               # Saved model weights and checkpoints
+└── requirements.txt      # Python dependencies
+
 ```
 
 
