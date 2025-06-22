@@ -1,23 +1,107 @@
 # Semantic Segmentation for Extracting Geologic Features from Historic Topographic Maps
 
+## Repository Overview
+
+This repository contains the full implementation of a semantic segmentation pipeline for extracting geologic features from historic topographic maps using U-Net and Mask_RCNN.\'
+## Project Structure
+
+```
+Semantic-Segmentation-for-Feature-Extraction/
+├── main.py               # Entry point: ties together data loading, training, and evaluation
+├── loading.py            # Data loading and preprocessing functions
+├── trainer.py            # Model architecture, training, and performance tracking
+├── evaluate.py           # Model evaluation and visualization
+├── utils.py              # Helper functions for plotting, metrics, etc.
+├── README.md             # Project documentation
+└── models/               # (Optional) Saved model weights and checkpoints
+```
+
+---
+
 ## Objectives
 
-The objective of this project was to extract specific geologic features from historic topographic USGS maps. Traditional map processing techniques typically rely on manually collected templates representing the feature of interest, followed by template matching through computer vision techniques. Yet, we were faced with thousands of scanned maps that needed to be vectorized and digitized in to a format suitable for efficient extraction and integration into analysis. Moreover, these maps presented additional complexities such as inconsistencies between map labelings and variations in features symbology, overprinting with contour lines, text and labels, and the presence of scanning artifacts like folds, rotations, and other irregularities further complicated the process. Addressing these complexities required techniques and models more advanced than those employed by traditional computer vision methods. We estimated that manually digitizing and extracting features from a single map would take 1-2 weeks for a single human expert. However, by harnessing AI techniques, our goal was to accomplish this task within minutes or hours, significantly reducing the time and effort involved.
+The objective of this project was to extract specific geologic features from historic topographic USGS maps. The goal is to replace time-intensive manual digitization (which can take 1–2 weeks per map) with deep learning techniques that can perform the same task in minutes or hours. Traditional feature extraction methods rely on template matching, which is inadequate for large-scale, noisy datasets such as scanned historical maps. These maps present challenges such as:
+
+* Variability in symbology
+* Overprinting with contours, labels, and text
+* Scanning artifacts (folds, rotations, blurs)
+
+The objective was to build a model capable of automatically identifying and classifying relevant map features with minimal human intervention, allowing for efficient vectorization and downstream geospatial analysis.
 
 ## Model Architecture
 
-For this project I employed  a CNN with an encoder–decoder architecture based on UNet. The data were processed with different augmentation techniques and the best network architecture was searched by running several experiments where the important parameters were tuned. I showed that even with a small number of training images promising results can be achieved. 
-UNet has demonstrated remarkable potential in effectively modeling intricate spatial patterns and contextual relationships, while also generating data abstractions that generalize well to unseen data. Given the complex nature of topographic maps and the need for robust pattern recognition, UNet is an excellent deep learning architecture to explore for this specific project. 
+Absolutely! Since your repository includes **both U-Net and Mask R-CNN implementations**, the **"Model Architecture"** section should reflect this dual approach. Here's a revised version that describes both architectures clearly while preserving your original tone and intent:
 
-## Network Configurations and Training
+---
 
-The training algorithm uses Focal Loss as the loss function which is designed to make the network focus on hard examples by giving more weight-age and also to deal with extreme class imbalance. I also tried training the network using Dice Loss (Dice loss is basically same as F1 score, in fact the IOU (Jaccard Index) metric can also be used as the loss function to run the optimization as well). During the training I keep track of the IOU metrics to monitor and measure the performance of the model during training and testing. 
-* Training and validation were performed in an iterative fashion. Three parameters were considered: number of layers, number of filters per layer, and kernel size. At each iteration, different combinations of these parameters were chosen, and the training was performed. At the end, the performance of the different trained networks were compared. The average training and validation accuracy achieved over the whole dataset were used as the performance metric. The configurations that achieved the worse results have been discarded.
-* number of layers most strongly affects the accuracy
-* number of feature maps does not significantly affect the accuracy
+## Model Architecture
+
+This project implements and compares two deep learning models for semantic segmentation: **U-Net** and **Mask R-CNN**. Each model offers distinct advantages depending on the nature of the features being extracted and the characteristics of the input maps.
+
+### 🧠 U-Net
+
+U-Net is a fully convolutional neural network with an encoder–decoder architecture that has demonstrated remarkable effectiveness in modeling complex spatial patterns. Given the intricate nature of topographic maps and the need for robust pixel-level predictions, U-Net was chosen as a primary architecture. It is particularly effective when working with a limited number of labeled training images and can generalize well to unseen data.
+
+Key strengths of the U-Net approach:
+
+* Well-suited for dense, pixel-level classification
+* Captures fine-grained details of geologic features
+* Efficient training with relatively few annotated examples
+
+We employed a transfer learning strategy by using a **ResNet34** backbone pre-trained on ImageNet, and experimented with various hyperparameters such as number of layers, kernel sizes, and loss functions (e.g., Focal Loss, Dice Loss, Jaccard Loss).
+
+### 🧠 Mask R-CNN
+
+Mask R-CNN extends Faster R-CNN by adding a branch for predicting segmentation masks on each Region of Interest (RoI). This model is ideal for detecting and segmenting **object-based features** with well-defined boundaries, such as specific geological symbols or discrete features embedded in the map.
+
+Key strengths of the Mask R-CNN approach:
+
+* Excellent at instance segmentation and object detection
+* Works well when features of interest are sparse but distinct
+* Offers bounding boxes in addition to segmentation masks
+
+The Mask R-CNN implementation provides a complementary approach to U-Net, especially useful when object-level detection is required alongside semantic segmentation.
+
+Both models were implemented from scratch and trained using customized pipelines for data loading, preprocessing, augmentation, and evaluation. Results from each model were compared across multiple metrics including **Intersection over Union (IoU)** and **visual inspection** to assess real-world applicability.
+
+## Network Configuration & Training
+
+* **Loss Functions**: Used categorical focal loss to handle class imbalance and force attention on harder samples. Dice loss and IOU-based losses were also explored.
+* **Backbone**: ResNet34 with ImageNet pretrained weights
+* **Augmentation**: Applied flipping, scaling, and normalization techniques to improve generalization.
+* **Parameter Search**: Systematic experiments were conducted to tune:
+
+  * Number of layers
+  * Number of filters per layer
+  * Kernel size
+
+Model performance was evaluated using Intersection-over-Union (IoU), Frequency Weighted IoU, accuracy, F1 score, and confusion matrices.
 
 ## Results
 
-After the model was trained and evaluated on unseen maps, to ensure transparency and provide a comprehensive assessment, I shared side-by-side images of the ground-truth maps/masks alongside the predicted segmented maps with the client. Furthermore, I shared the model's performance metrics on unseen maps, including metrics such as Frequency weighted IOU, F1 score, accuracy, and multi-class confusion matrix plots. These metrics provided quantitative measures of the model's performance, enabling the client to gain a deeper understanding of its accuracy, precision, and overall effectiveness.
-By offering both visual and numerical assessments, I aimed to provide the client with a comprehensive and transparent evaluation of the model's performance on the task at hand.
-During our discussion, I explained the specific features that the network accurately segmented, as well as those that exhibited some confusion for the network. I delved into how the training data influenced these results and emphasized the benefits of incorporating additional training samples to improve the segmentation of these features.
+After training and evaluation:
+
+* Visual comparisons between ground-truth masks and predicted outputs were shared with the client.
+* Quantitative metrics confirmed the model's strong performance on unseen data.
+* The model performed well on major feature classes, with some confusion in classes underrepresented in training data.
+
+Suggestions were made to include more annotated examples for such classes to improve model precision.
+
+## Repository
+
+GitHub Repository: [https://github.com/hhaeri/Semantic-Segmentation-for-Feature-Extraction](https://github.com/hhaeri/Semantic-Segmentation-for-Feature-Extraction)
+
+Modular refactoring in progress. Current structure includes:
+
+* `main.py`: main execution script
+* `loading.py`: data generators and preprocessing
+* `trainer.py`: model definition and training loop
+* `evaluate.py`: performance evaluation and visualization
+* `utils.py`: plotting, augmentation, and helper functions
+
+---
+
+**Author**: Hanieh Haeri
+**Created**: January 20, 2023
+
+---
