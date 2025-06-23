@@ -38,6 +38,9 @@ def train_generator(img_path, mask_path, batch_size=BATCH_SIZE):
         yield preprocess_data(img, mask)
 
 def get_train_val_generators():
+    """
+    Returns training and validation data generators.
+    """
     train_gen = train_generator(TRAIN_IMG_PATH, TRAIN_MASK_PATH)
     val_gen = train_generator(VAL_IMG_PATH, VAL_MASK_PATH)
     return train_gen, val_gen
