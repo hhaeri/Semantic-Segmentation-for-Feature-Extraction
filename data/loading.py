@@ -1,5 +1,6 @@
 """
-Data loading and preprocessing functions for training and validation datasets.
+Handles data loading, preprocessing, and augmentation for images and masks.
+Defines generators for training and validation datasets.
 Author: Hanieh Haeri
 Created on: 1/20/2023
 """
