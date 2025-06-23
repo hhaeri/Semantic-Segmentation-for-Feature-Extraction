@@ -1,0 +1,7 @@
+tensorflow
+segmentation-models
+opencv-python
+matplotlib
+numpy
+scikit-learn
+split-folders
