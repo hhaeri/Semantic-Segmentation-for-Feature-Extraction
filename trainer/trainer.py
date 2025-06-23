@@ -1,5 +1,3 @@
-# Author: Hanieh Haeri
-# Created: 01/20/2023
 """
 Defines model compilation, training logic, and performance visualization.
 Uses transfer learning with U-Net and pretrained encoders from segmentation_models.
