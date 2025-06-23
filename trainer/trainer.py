@@ -1,5 +1,11 @@
 # Author: Hanieh Haeri
 # Created: 01/20/2023
+"""
+Defines model compilation, training logic, and performance visualization.
+Uses transfer learning with U-Net and pretrained encoders from segmentation_models.
+Author: Hanieh Haeri
+Created on: 1/20/2023
+"""
 
 from tensorflow.keras.metrics import MeanIoU
 import segmentation_models as sm
