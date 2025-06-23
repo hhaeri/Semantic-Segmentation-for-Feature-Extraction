@@ -44,7 +44,7 @@ Semantic-Segmentation-for-Feature-Extraction/
 
 ## Objectives
 
-The objective of this project was to extract specific geologic features from historic topographic USGS maps. The goal is to replace time-intensive manual digitization (which can take 1–2 weeks per map) with deep learning techniques that can perform the same task in minutes or hours. Traditional feature extraction methods rely on template matching, which is inadequate for large-scale, noisy datasets such as scanned historical maps. These maps present challenges such as:
+The objective of this project was to extract specific geologic features from historic topographic maps. The goal is to replace time-intensive manual digitization (which can take 1–2 weeks per map) with deep learning techniques that can perform the same task in minutes or hours. Traditional feature extraction methods rely on template matching, which is inadequate for large-scale, noisy datasets such as scanned historical maps. These maps present challenges such as:
 
 * Variability in symbology
 * Overprinting with contours, labels, and text
