@@ -1,7 +1,9 @@
-# Author: Hanieh Haeri
-# Created: 01/20/2023
-# Helper for visualizing training and predictions
-
+"""
+Utility functions used across the project, including plotting and image helpers.
+Can be extended for logging, metrics formatting, or custom callbacks.
+Author: Hanieh Haeri
+Created on: 1/20/2023
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 import random
