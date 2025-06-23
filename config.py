@@ -3,9 +3,11 @@
 
 # Configuration file to centralize paths and constants
 
-SEED = 24
 BATCH_SIZE = 16
-N_CLASSES = 6
+NUM_CLASSES = 4
+IMG_HEIGHT = 256
+IMG_WIDTH = 256
+EPOCHS = 25
 BACKBONE = 'resnet34'
 
 TRAIN_IMG_PATH = "/data/train/images/"
